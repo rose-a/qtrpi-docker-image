@@ -1,9 +1,8 @@
 FROM ubuntu:latest
 MAINTAINER Alexander Rose <arose@haprotec.de>
 
-# install git
-RUN apt-get update
-RUN apt-get install -y \
+# install necessary packages
+RUN apt-get update && apt-get install -y \
     build-essential \
     curl \
     git \
