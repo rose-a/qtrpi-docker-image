@@ -25,7 +25,7 @@ COPY scripts/init-common.sh /qtrpi/utils
 WORKDIR /qtrpi
 
 # Execute init script
-RUN ./init-qtrpi-docker-minimal.sh
+RUN ./init-qtrpi-minimal.sh
 
 # Extend path
 ENV PATH=/opt/qtrpi/bin:$PATH
