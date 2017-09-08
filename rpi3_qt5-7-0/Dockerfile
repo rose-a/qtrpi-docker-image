@@ -11,12 +11,15 @@ RUN apt-get update && apt-get install -y \
 # Clone Qtrpi
 RUN git clone https://github.com/neuronalmotion/qtrpi.git
 
-# Add additional scripts
-COPY scripts/docker-build.sh /qtrpi
-COPY scripts/init-common.sh /qtrpi/utils
+# Clone additional scripts
+RUN git clone https://github.com/rose-a/qtrpi-docker-image.git
+
+# Copy scripts
+RUN cp /qtrpi-docker-image/scripts/docker-build.sh /qtrpi/ && \
+    cp /qtrpi-docker-image/scripts/init-common.sh /qtrpi/utils/
 
 # Setup Qtrpi environment
-ENV QTRPI_QT_VERSION='5.6.2' \
+ENV QTRPI_QT_VERSION='5.7.0' \
     QTRPI_TARGET_DEVICE='linux-rpi3-g++' \
     QTRPI_TARGET_HOST='pi@localhost' \
     QTRPI_DOCKER='True'
