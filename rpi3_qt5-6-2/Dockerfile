@@ -1,5 +1,5 @@
 FROM ubuntu:latest
-MAINTAINER Alexander Rose <arose@haprotec.de>
+LABEL maintainer="Alexander Rose <alex@rose-a.de>" 
 
 # install necessary packages
 RUN apt-get update && apt-get install -y \
