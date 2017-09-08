@@ -18,9 +18,9 @@ ENV QTRPI_SKIP_SANITY_CHECK='True'
 RUN git clone https://github.com/neuronalmotion/qtrpi.git
 
 # Add additional scripts
-ADD scripts/docker-build.sh /qtrpi
-ADD scripts/init-common-docker.sh /qtrpi/utils
-ADD scripts/init-qtrpi-docker-minimal.sh /qtrpi
+COPY scripts/docker-build.sh /qtrpi
+COPY scripts/init-common-docker.sh /qtrpi/utils
+COPY scripts/init-qtrpi-docker-minimal.sh /qtrpi
 
 # Change workdir
 WORKDIR /qtrpi
