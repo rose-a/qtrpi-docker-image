@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y \
 ENV QTRPI_QT_VERSION='5.6.2'
 ENV QTRPI_TARGET_DEVICE='linux-rpi3-g++'
 ENV QTRPI_TARGET_HOST='pi@localhost'
-ENV QTRPI_SKIP_SANITY_CHECK='True'
+ENV QTRPI_DOCKER='True'
 
 # Clone Qtrpi
 RUN git clone https://github.com/neuronalmotion/qtrpi.git
