@@ -19,8 +19,7 @@ RUN git clone https://github.com/neuronalmotion/qtrpi.git
 
 # Add additional scripts
 COPY scripts/docker-build.sh /qtrpi
-COPY scripts/init-common-docker.sh /qtrpi/utils
-COPY scripts/init-qtrpi-docker-minimal.sh /qtrpi
+COPY scripts/init-common.sh /qtrpi/utils
 
 # Change workdir
 WORKDIR /qtrpi
