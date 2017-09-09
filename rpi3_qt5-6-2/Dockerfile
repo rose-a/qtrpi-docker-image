@@ -2,11 +2,12 @@ FROM debian:stable-slim
 LABEL maintainer="Alexander Rose <alex@rose-a.de>" 
 
 # install necessary packages
-RUN apt-get update && apt-get install -y \
+RUN apt-get update -q && apt-get install -y --no-install-recommends \
     build-essential \
     curl \
     git \
-    unzip
+    unzip \
+    && rm -rf /var/lib/apt/lists/*
 
 # Clone Qtrpi
 RUN git clone https://github.com/neuronalmotion/qtrpi.git
