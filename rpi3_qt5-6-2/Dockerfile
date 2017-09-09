@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM debian:stable-slim
 LABEL maintainer="Alexander Rose <alex@rose-a.de>" 
 
 # install necessary packages
@@ -12,11 +12,10 @@ RUN apt-get update && apt-get install -y \
 RUN git clone https://github.com/neuronalmotion/qtrpi.git
 
 # Clone additional scripts
-RUN git clone https://github.com/rose-a/qtrpi-docker-image.git
-
-# Copy scripts
-RUN cp /qtrpi-docker-image/scripts/docker-build.sh /qtrpi/ && \
-    cp /qtrpi-docker-image/scripts/init-common.sh /qtrpi/utils/
+RUN git clone https://github.com/rose-a/qtrpi-docker-image.git && \
+    cp /qtrpi-docker-image/scripts/docker-build.sh /qtrpi/ && \
+    cp /qtrpi-docker-image/scripts/init-common.sh /qtrpi/utils/ && \
+    rm -rf /qtrpi-docker-image
 
 # Setup Qtrpi environment
 ENV QTRPI_QT_VERSION='5.6.2' \
@@ -29,6 +28,9 @@ WORKDIR /qtrpi
 
 # Execute init script
 RUN ./init-qtrpi-minimal.sh
+
+# Clean up
+RUN rm /opt/qtrpi/*.zip
 
 # Extend path
 ENV PATH=/opt/qtrpi/bin:$PATH
