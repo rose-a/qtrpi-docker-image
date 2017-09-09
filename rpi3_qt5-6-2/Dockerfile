@@ -2,8 +2,9 @@ FROM debian:stable-slim
 LABEL maintainer="Alexander Rose <alex@rose-a.de>" 
 
 # install necessary packages
-RUN apt-get update -q && apt-get install -y --no-install-recommends \
+RUN apt-get update -q && apt-get install -yq --no-install-recommends \
     build-essential \
+    ca-certificates \
     curl \
     git \
     unzip \
